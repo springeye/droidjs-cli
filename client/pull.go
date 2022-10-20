@@ -1,0 +1,9 @@
+package client
+
+import "fmt"
+
+func SetupClientPullAction(args []string, options map[string]string) int {
+	fmt.Printf("%v\n", args)
+	fmt.Printf("%v\n", options)
+	return 0
+}

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/springeye/droidjs-cli/client"
 	config2 "github.com/springeye/droidjs-cli/config"
 	"github.com/teris-io/cli"
 	"os"
@@ -8,10 +9,7 @@ import (
 
 func main() {
 	list := cli.NewCommand("list", "查看云端文件列表").
-		WithAction(func(args []string, options map[string]string) int {
-			// do something
-			return 0
-		})
+		WithAction(client.SetupClientListAction)
 
 	pull := cli.NewCommand("pull", "从云端拉取一个文件到本地").
 		WithArg(
@@ -24,10 +22,7 @@ func main() {
 				WithChar('i').
 				WithType(cli.TypeBool),
 		).
-		WithAction(func(args []string, options map[string]string) int {
-			// do something
-			return 0
-		})
+		WithAction(client.SetupClientPullAction)
 
 	config := cli.NewCommand("config", "配置客户端").
 		WithShortcut("cfg").
